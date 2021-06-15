@@ -1,0 +1,68 @@
+{
+    "config": {
+
+        "mqtt-broker-hostname": {
+            "help": "MQTT Broker hostname",
+            "value": "\"mqtt.tago.io\""
+        },
+        "mqtt-broker-port": {
+            "help": "MQTT Broker port",
+            "value": "1883"
+        },
+        "mqtt-clientid":{
+            "help": "MQTT client name",
+            "value": "\"MQTT_mbed\""
+        },
+        "mqtt-username":{
+            "help": "MQTT user name",
+            "value": "\"Token\""
+        },
+        "mqtt-password":{
+            "help": "Authentication Token ",
+            "value": "\"04d1bc93-b5f4-450b-9aa9-eb0817ae5450\""
+        }, 
+        "mqtt-pubtopic": {
+            "help": "MQTT topic to publish",
+            "value": "\"heartrate\""
+        },
+        "trace-level": {
+            "help": "Options are TRACE_LEVEL_ERROR,TRACE_LEVEL_WARN,TRACE_LEVEL_INFO,TRACE_LEVEL_DEBUG",
+            "macro_name": "MBED_TRACE_MAX_LEVEL",
+            "value": "TRACE_LEVEL_INFO"
+        }
+  },
+    "target_overrides": {
+        "*": {
+            "target.network-default-interface-type": "CELLULAR",
+            "mbed-trace.enable": true,
+            "lwip.ipv4-enabled": true,
+            "ppp.ipv4-enabled": true,
+            "lwip.ipv6-enabled": true,
+            "ppp.ipv6-enabled": true,
+            "lwip.ethernet-enabled": false,
+            "lwip.ppp-enabled": true,
+            "lwip.tcp-enabled": true,
+            "platform.stdio-convert-newlines": true,
+            "platform.stdio-baud-rate": 115200,
+            "platform.default-serial-baud-rate": 115200,
+            "platform.stdio-buffered-serial": true,
+            "cellular.debug-at": false,
+            "cellular.use-apn-lookup": true,
+            "nsapi.default-cellular-sim-pin": "\"5385\"",
+            "nsapi.default-cellular-plmn": null,
+            "nsapi.default-cellular-apn": "\"em\"",
+            "nsapi.default-cellular-username": null,
+            "nsapi.default-cellular-password": null,
+            "target.c_lib": "std",
+            "target.printf_lib": "std"
+        },
+        "NUCLEO_F767ZI": {
+            "target.macros_add": [
+                "CELLULAR_DEVICE=STModCellular"
+            ],
+            "target.components_add": ["STMOD_CELLULAR"],
+            "stmod_cellular.provide-default": "true"
+        }
+    }
+}
+
